@@ -1,0 +1,5 @@
+https://docs.angularjs.org/api/ng/function/angular.element
+http://tutsnare.com/add-class-dynamically-using-angularjs/
+https://scotch.io/tutorials/the-many-ways-to-use-ngclass
+
+http://devdocs.io/offline documentacion offline

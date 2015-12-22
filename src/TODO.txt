@@ -1,0 +1,9 @@
+Para deploy clonar directorio Veterinario y archivo manage.py(cambiando el destino de DJANGO_SETTINGS_MODULE)
+
+Revisar si es posible cambiar DJANGO_SETTINGS_MODULE desde fuera sin modificar mucho el script
+o crear version propia de manage.py
+El objetivo es gestionar multiples sitios con la misma instalación(convertir vet en app instalable con pip??)
+
+
+ANGULAR: creación de filtros personalizados que reciban argumentos
+ANGULAR: creación de validaciones propias(ej: min-max).
