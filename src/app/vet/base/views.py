@@ -1,3 +1,6 @@
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
@@ -6,57 +9,45 @@ from .models import Clinica
 from .serializers import ClinicaSerializer
 
 
-class JSONResponse(HttpResponse):
+@api_view(['GET', 'POST'])
+def clinica_list(request, format=None):
     """
-    An HttpResponse that renders its content into JSON.
-    """
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
-
-
-@csrf_exempt
-def clinica_list(request):
-    """
-    List all code snippets, or create a new snippet.
+    List all code snippets, or create a new Clinica.
     """
     if request.method == 'GET':
         clinicas = Clinica.objects.all()
         serializer = ClinicaSerializer(clinicas, many=True)
-        return JSONResponse(serializer.data)
+        return Response(serializer.data)
 
     elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = ClinicaSerializer(data=data)
+        serializer = ClinicaSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JSONResponse(serializer.data, status=201)
-        return JSONResponse(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@csrf_exempt
-def clinica_detail(request, pk):
+@api_view(['GET', 'PUT', 'DELETE'])
+def clinica_detail(request, pk, format=None):
     """
-    Retrieve, update or delete a code snippet.
+    Retrieve, update or delete a Clinica.
     """
     try:
         clinica = Clinica.objects.get(pk=pk)
     except Clinica.DoesNotExist:
-        return HttpResponse(status=404)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         serializer = ClinicaSerializer(clinica)
-        return JSONResponse(serializer.data)
+        return Response(serializer.data)
 
     elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = ClinicaSerializer(clinica, data=data)
+        serializer = ClinicaSerializer(clinica, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JSONResponse(serializer.data)
-        return JSONResponse(serializer.errors, status=400)
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         clinica.delete()
-        return HttpResponse(status=204)
+        return Response(status=status.HTTP_204_NO_CONTENT)
