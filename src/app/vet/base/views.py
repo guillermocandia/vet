@@ -4,7 +4,7 @@ from .serializers import ClinicaSerializer
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
 # from rest_framework import status
-from rest_framework import mixins
+# from rest_framework import mixins
 from rest_framework import generics
 
 # class ClinicaList(APIView):
@@ -24,17 +24,22 @@ from rest_framework import generics
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ClinicaList(mixins.ListModelMixin,
-                  mixins.CreateModelMixin,
-                  generics.GenericAPIView):
-        queryset = Clinica.objects.all()
-        serializer_class = ClinicaSerializer
+# class ClinicaList(mixins.ListModelMixin,
+#                   mixins.CreateModelMixin,
+#                   generics.GenericAPIView):
+#         queryset = Clinica.objects.all()
+#         serializer_class = ClinicaSerializer
+# 
+#         def get(self, request, *args, **kwargs):
+#             return self.list(request, *args, **kwargs)
+# 
+#         def post(self, request, *args, **kwargs):
+#             return self.create(request, *args, **kwargs)
 
-        def get(self, request, *args, **kwargs):
-            return self.list(request, *args, **kwargs)
 
-        def post(self, request, *args, **kwargs):
-            return self.create(request, *args, **kwargs)
+class ClinicaList(generics.ListCreateAPIView):
+    queryset = Clinica.objects.all()
+    serializer_class = ClinicaSerializer
 
 
 # class ClinicaDetail(APIView):
@@ -66,18 +71,23 @@ class ClinicaList(mixins.ListModelMixin,
 #             return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class ClinicaDetail(mixins.RetrieveModelMixin,
-                    mixins.UpdateModelMixin,
-                    mixins.DestroyModelMixin,
-                    generics.GenericAPIView):
-        queryset = Clinica.objects.all()
-        serializer_class = ClinicaSerializer
+# class ClinicaDetail(mixins.RetrieveModelMixin,
+#                     mixins.UpdateModelMixin,
+#                     mixins.DestroyModelMixin,
+#                     generics.GenericAPIView):
+#         queryset = Clinica.objects.all()
+#         serializer_class = ClinicaSerializer
+# 
+#         def get(self, request, *args, **kwargs):
+#             return self.retrieve(request, *args, **kwargs)
+# 
+#         def put(self, request, *args, **kwargs):
+#             return self.update(request, *args, **kwargs)
+# 
+#         def delete(self, request, *args, **kwargs):
+#             return self.destroy(request, *args, **kwargs)
 
-        def get(self, request, *args, **kwargs):
-            return self.retrieve(request, *args, **kwargs)
 
-        def put(self, request, *args, **kwargs):
-            return self.update(request, *args, **kwargs)
-
-        def delete(self, request, *args, **kwargs):
-            return self.destroy(request, *args, **kwargs)
+class ClinicaDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Clinica.objects.all()
+    serializer_class = ClinicaSerializer
