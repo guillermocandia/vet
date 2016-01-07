@@ -6,6 +6,17 @@ from .serializers import ClinicaSerializer
 # from rest_framework import status
 # from rest_framework import mixins
 from rest_framework import generics
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
+
+@api_view(('GET',))
+def api_root(request, format=None):
+    return Response({
+                     'clinicas': reverse('clinica-list', request=request, format=format)
+    })
+
 
 # class ClinicaList(APIView):
 #     """

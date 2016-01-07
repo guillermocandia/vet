@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    url(r'^base/', include('app.vet.base.urls')),
+    url(r'', include('app.vet.base.urls')),
     url(r'^admin/', include(admin.site.urls))
 ]
 

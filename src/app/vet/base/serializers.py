@@ -3,10 +3,11 @@ from rest_framework import serializers
 from .models import Clinica
 
 
-class ClinicaSerializer(serializers.ModelSerializer):
+class ClinicaSerializer(serializers.HyperlinkedModelSerializer):
         class Meta:
             model = Clinica
             fields = ('id',
+                      'url',
                       'nombre',
                       'direccion',
                       'ciudad',
