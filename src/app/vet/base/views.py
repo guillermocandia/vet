@@ -9,6 +9,7 @@ from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
+from rest_framework import filters
 
 
 @api_view(('GET',))
@@ -49,9 +50,13 @@ def api_root(request, format=None):
 
 
 class ClinicaList(generics.ListCreateAPIView):
+    """
+    List all clinica, or create a new clinica.
+    """
     queryset = Clinica.objects.all()
     serializer_class = ClinicaSerializer
-
+    search_fields = ('nombre', 'correo_electronico')
+    filter_backends = (filters.SearchFilter,)
 
 # class ClinicaDetail(APIView):
 #         """
