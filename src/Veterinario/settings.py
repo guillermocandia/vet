@@ -21,9 +21,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'app.vet.base',
-    'app.vet.personal',
-    'app.vet.personal.permisos',
+    'app.recursos.localidades',
+    #'app.vet.base',
+    #'app.vet.personal',
+    #'app.vet.personal.permisos',
 )
 
 MIDDLEWARE_CLASSES = (
