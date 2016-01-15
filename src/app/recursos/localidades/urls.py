@@ -21,7 +21,16 @@ urlpatterns = [
         name='provincia-detail'),
     url(r'^comunas/(?P<pk>[0-9]+)/$',
         views.ComunaDetail.as_view(),
-        name='comuna-detail')
+        name='comuna-detail'),
+    url(r'^regiones/(?P<pk>[0-9]+)/provincias/$',
+        views.RegionProvinciasList.as_view(),
+        name='region-provincias-list'),
+    url(r'^regiones/(?P<pk>[0-9]+)/comunas/$',
+        views.RegionComunasList.as_view(),
+        name='region-comunas-list'),
+    url(r'^provincias/(?P<pk>[0-9]+)/comunas/$',
+        views.ProvinciaComunasList.as_view(),
+        name='provincia-comunas-list')
     ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

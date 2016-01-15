@@ -32,7 +32,7 @@ class Provincia(models.Model):
         null=False
     )
 
-    region = models.ForeignKey(Region)
+    region = models.ForeignKey(Region, related_name='provincias')
 
     def __str__(self):
         return self.nombre
@@ -53,7 +53,7 @@ class Comuna(models.Model):
         null=False
     )
 
-    provincia = models.ForeignKey(Provincia)
+    provincia = models.ForeignKey(Provincia, related_name='comunas')
 
     def __str__(self):
         return self.nombre
