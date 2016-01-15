@@ -20,3 +20,18 @@ class ProvinciasList(generics.ListAPIView):
 class ComunasList(generics.ListAPIView):
     queryset = Comuna.objects.all()
     serializer_class = ComunaSerializer
+
+
+class RegionDetail(generics.RetrieveAPIView):
+    queryset = Region.objects.all()
+    serializer_class = RegionSerializer
+
+
+class ProvinciaDetail(generics.RetrieveAPIView):
+    queryset = Provincia.objects.all()
+    serializer_class = ProvinciaSerializer
+
+
+class ComunaDetail(generics.RetrieveAPIView):
+    queryset = Comuna.objects.all()
+    serializer_class = ComunaSerializer
