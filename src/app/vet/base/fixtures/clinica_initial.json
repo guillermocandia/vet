@@ -1,1 +1,0 @@
-[{"fields": {"logo": "dev/logo/20151103040323_logo.png", "nombre": "Clinica de prueba", "correo_electr\u00f3nico": "guillermo.candia@gmail.com", "direccion": "calle nombre-calle 678", "telefono_movil": "+56 9 123456789", "ciudad": "Valparaiso", "telefono_fijo": "+56 32 12345678"}, "pk": 1, "model": "base.clinica"}]
