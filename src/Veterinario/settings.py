@@ -22,7 +22,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'app.recursos.localidades',
-    #'app.vet.base',
+    'app.vet.base',
     #'app.vet.personal',
     #'app.vet.personal.permisos',
 )
