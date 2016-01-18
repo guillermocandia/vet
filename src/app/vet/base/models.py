@@ -57,3 +57,34 @@ class Clinica(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+class Opcion(models.Model):
+    """
+    Opciones disponibles
+    """
+    nombre = models.CharField(
+        'Nombre',
+        max_length=64,
+        blank=False,
+        null=False
+    )
+    valor = models.CharField(
+        'Valor',
+        max_length=64,
+        blank=False,
+        null=False
+    )
+    descripcion = models.CharField(
+        'Descripción',
+        max_length=256,
+        blank=True,
+        null=True
+    )
+
+    class Meta:
+        verbose_name = 'Opción'
+        verbose_name_plural = 'Opciones'
+
+    def __str__(self):
+        return '%s: %s' % (self.nombre, self.descripcion)
