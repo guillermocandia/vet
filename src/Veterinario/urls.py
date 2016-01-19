@@ -6,6 +6,7 @@ from django.conf import settings
 urlpatterns = [
     url(r'^localidades/', include('app.recursos.localidades.urls')),
     url(r'', include('app.vet.base.urls')),
+    url(r'', include('app.vet.clientes.urls')),
     url(r'^admin/', include(admin.site.urls))
 ]
 

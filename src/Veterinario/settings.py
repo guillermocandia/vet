@@ -23,6 +23,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'app.recursos.localidades',
     'app.vet.base',
+    'app.vet.clientes',
     #'app.vet.personal',
     #'app.vet.personal.permisos',
 )
